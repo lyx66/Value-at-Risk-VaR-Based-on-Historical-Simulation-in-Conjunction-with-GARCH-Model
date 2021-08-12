@@ -7,7 +7,7 @@
 </br>This code can output *rolling VaR* time series at any rolling window length and quantiles which you're intrested in, as shown in *Fig.1 below*.
 #### *Fig.1 VaR at diffrent winsize(A) & at diffrent quantiles(B)*
 ![fig.1](https://github.com/lyx66/limyingxin/blob/master/Function%20of%20Main%20code.png?raw=false)
-- __*How it work?*__
+- __*How dose this code work?*__
 </br>The model integrates __*historical simulation, GARCH(1,1) model and rolling samples technology*__ for the calculation of *VaR*. More specifically, I set two rolling windows in the code, one is called *"big window"* and the other is named as *"small window"*, among which the latter is included in the former. 
 1. When the procedure works, big window is used to estimate GARCH(1,1) model so that the volatility of assets in each time point will be available. 
 2. After that, the historical data will be updated by the GARCH volatility (*i.g.* that is, wighted by the volatility), so that the difference betweenthe historical volatility of the market variable and its current volatility can be reflected[*(Hull & White, 1998)*](http://www.smartquant.com/references/VaR/var32.pdf).
