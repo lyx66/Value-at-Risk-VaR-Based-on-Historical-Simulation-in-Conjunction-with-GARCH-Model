@@ -20,50 +20,22 @@
 - By modified `winsize` in [Main code](https://github.com/lyx66/Historical-Simulation-in-Conjunction-with-GARCH-Model-for-Value-at-Risk-VaR/blob/main/Main%20code.ipynb), you can change the lenth of rolling window. Accordingly, `2 * winsize - 1` observations will be lost, since there is two rolling windows in my code.
 - In a stantard GARCH(1,1) model, the volatility of financial time series can be described as fellow equation: 
 <div align=center><img src="https://raw.githubusercontent.com/lyx66/limyingxin/9eeb37e2ca5c106dbd4c811db198bf0ca17a6209/MommyTalk1628787855537.svg"/></div>
-</br>Since the average value of a financial time serie is always close to 0, the residual error is quite close to financial time serie itself in GARCH model. Therefore, I approximate residuals to time series to reduce running time in this code. The relevant codes are shown below:</br>
+
+- Since the average value of a financial time serie is always close to 0, the residual error is quite close to financial time serie itself in GARCH model. Therefore, I approximate residuals to time series to reduce running time in this code. The relevant codes are shown below ( within function `GARCH_HS` ):</br>
 ```
-  def GARCH_HS(s, winsize, day=4, miu=False):
-      s = s.reset_index(drop=True)  # 对Series s 重设索引
+def GARCH_HS(s, winsize, day=4, miu=False):
 
+    ······
+    # Approximate residuals gamma to asset return time series
+    gamma = ret
+    gamma_2 = gamma ** 2
 
-      garch = arch_model(y=s, mean='Constant', lags=0, vol='GARCH', p=1, o=0, q=1, dist='normal')
+    # Obtain volatility
+    for i in range(winsize):
+        sigma_2[i + 1] = params[1] + params[2] * gamma_2[i] + params[3] * sigma_2[i]
 
-      garchmodel = garch.fit(disp=0)
-      params = garchmodel.params
-      sigma = sigma_2 = np.zeros(winsize + 1)  # +1 是为了放未来波动率的预测值
-
-      # Set volatility at the 1st time point of the 2rd window
-      if day != 0:
-          sigma[0] = (s[winsize - day:winsize]).std()
-      else:
-          sigma[0] = 0.0
-
-
-      ret = s[winsize - 1:]
-      ret = ret.reset_index(drop=True)
-
-
-      # Set gamma (γ)
-      if miu:
-          gamma = ret - params[0]
-      else:
-          gamma = ret
-
-      # gamma = ret
-
-      gamma_2 = gamma ** 2
-
-      for i in range(winsize):
-          sigma_2[i + 1] = params[1] + params[2] * gamma_2[i] + params[3] * sigma_2[i]
-
-      sigma = np.sqrt(sigma_2)
-
-      wight = 1 / sigma[:-1]
-      wight_ret = ret * wight * sigma[-1]
-      VaR_p5 = np.percentile(wight_ret, 5)
-      VaR_p50 = np.percentile(wight_ret, 50)
-
-      return VaR_p5, VaR_p50
+    sigma = np.sqrt(sigma_2)
+    ······
 ```
 
 ### Files loaded
