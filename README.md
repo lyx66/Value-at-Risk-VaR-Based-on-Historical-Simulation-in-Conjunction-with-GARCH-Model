@@ -3,13 +3,25 @@
 ### 
 ### Introduction
 - This *Python* code is applied to compute __*rolling Value at Risk(VaR)*__ of fiancial assets and some of economic time series, based on the procedure proposed by [*Hull & White(1998)*](http://www.smartquant.com/references/VaR/var32.pdf).
+- __*Output*__
+</br>This code can output *rolling VaR* time series at any rolling window length and quantiles which you're intrested in, as shown in *Fig.1 below*.
+#### *Fig.1 VaR at diffrent winsize(A) & at diffrent quantiles(B)*
+![fig.1](https://github.com/lyx66/limyingxin/blob/master/Function%20of%20Main%20code.png?raw=false)
 - __*How it work?*__
-</br>The model integrates __historical simulation, GARCH(1,1) model and rolling samples technology__ for the calculation of *VaR*. More specifically, I set two rolling windows in the code, one is called *"big window"* and the other is named as *"small window"*, among which the latter is included in the former. 
+</br>The model integrates __*historical simulation, GARCH(1,1) model and rolling samples technology*__ for the calculation of *VaR*. More specifically, I set two rolling windows in the code, one is called *"big window"* and the other is named as *"small window"*, among which the latter is included in the former. 
 1. When the procedure works, big window is used to estimate GARCH(1,1) model so that the volatility of assets in each time point will be available. 
 2. After that, the historical data will be updated by the GARCH volatility (*i.g.* that is, wighted by the volatility), so that the difference betweenthe historical volatility of the market variable and its current volatility can be reflected[*(Hull & White, 1998)*](http://www.smartquant.com/references/VaR/var32.pdf).
 3. Finally, historical simulation will be applied in the small window, and then *VaR* is computed successfully.
-- Since the big window and small window mentioned above is rolling forword, the *VaR* outputted by this code will be *rolling VaR* (see *fig.1* below).
-
+- Since the big window and small window mentioned above is rolling forword, the *VaR* outputted by this code will be *rolling VaR* (see *Fig.2* below).
+#### *Fig.2 Rolling VaR time series at different winsizes*
+![fig.2](https://github.com/lyx66/Historical-Simulation-in-Conjunction-with-GARCH-Model-for-Value-at-Risk-VaR/blob/main/Rolling%20VaR%20at%20different%20winsizes.png?raw=false)
 
 ### Tips
 - by modified `winsize` in [Main code](), you can change the lenth of rolling window. Accordingly, `2 * winsize - 1` observations will be lost, since there is two rolling windows in my code.
+
+### Copyright notice
+- AUTHOR: __*Yingxin LIN*__
+- Company: *Prof.[__FAN Yi__](http://sf.cufe.edu.cn/info/1112/10555.htm)'s workshop, School of Finance, Central University of Finance and Economics* (CUFE)
+- Contact: lyxurthebest@163.com or lyxurthebest@outlook.com
+- The copyright belongs to __*Yingxin LIN*__ , 2021/08/12.
+#### *Enjoy*（。＾▽＾) *! (...and extend/modify)* 😊
