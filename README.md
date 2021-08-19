@@ -14,7 +14,7 @@
 3. Finally, historical simulation will be applied in the small window, and then *VaR* is computed successfully.
 - Since the big window and small window mentioned above is rolling forword, the *VaR* outputted by this code will be *rolling VaR* (see *Fig.2* below).
 #### *Fig.2 Rolling VaR time series at different winsizes*
-![fig.2](https://github.com/lyx66/Historical-Simulation-in-Conjunction-with-GARCH-Model-for-Value-at-Risk-VaR/blob/main/Rolling%20VaR%20at%20different%20winsizes.png?raw=false)
+![fig.2](https://github.com/lyx66/Value-at-Risk-VaR-Based-on-Historical-Simulation-in-Conjunction-with-GARCH-Model/blob/main/Rolling%20VaR%20at%20different%20winsizes.png?raw=false)
 
 ### Tips
 - By modified `winsize` in [Main code](https://github.com/lyx66/Historical-Simulation-in-Conjunction-with-GARCH-Model-for-Value-at-Risk-VaR/blob/main/Main%20code.ipynb), you can change the lenth of rolling window. Accordingly, `2 * winsize - 1` observations will be lost, since there is two rolling windows in my code.
