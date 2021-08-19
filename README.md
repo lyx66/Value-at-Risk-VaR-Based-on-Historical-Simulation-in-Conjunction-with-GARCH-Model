@@ -1,4 +1,4 @@
-# Historical-Simulation-in-Conjunction-with-GARCH-Model-for-Value-at-Risk-(VaR)
+# VaR-Based-on-Historical-Simulation-in-Conjunction-with-GARCH-Model
 ## by *Yingxin LIN*
 ### 
 ### Introduction
