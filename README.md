@@ -1,4 +1,4 @@
-# VaR-Based-on-Historical-Simulation-in-Conjunction-with-GARCH-Model
+## VaR-Based-on-Historical-Simulation-in-Conjunction-with-GARCH-Model
 by ***Yingxin LIN***
 ### 
 ### Introduction
