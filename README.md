@@ -22,7 +22,7 @@ by ***Yingxin LIN***
 <div align=center><img src="https://raw.githubusercontent.com/lyx66/limyingxin/9eeb37e2ca5c106dbd4c811db198bf0ca17a6209/MommyTalk1628787855537.svg"/></div>
 
 - Since the average value of a financial time serie is always close to 0, the residual error is quite close to financial time serie itself in GARCH model. Therefore, I approximate residuals to time series to reduce running time in this code. The relevant codes are shown below ( within function `GARCH_HS` ):</br>
-```
+``` Python
 def GARCH_HS(s, winsize, day=4, miu=False):
 
     ······
